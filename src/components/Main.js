@@ -18,7 +18,7 @@ const Main = () => {
         <meta property="og:type" content="website" />
         <title>Little Lemon | Home</title>
       </head>
-      <main>
+      <main className="main-content">
         <h1>Welcome to Little Lemon</h1>
         <p>Discover our delicious menu and book a table now!</p>
       </main>

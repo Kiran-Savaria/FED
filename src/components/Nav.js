@@ -1,18 +1,19 @@
 import React from 'react';
+import Header from './Header';
 
 const navLinks = [
-  { name: 'Home', url: '/' },
-  { name: 'Menu', url: '/menu' },
-  { name: 'Reservations', url: '/reservations' },
-  { name: 'Order Online', url: '/order' },
-  { name: 'About', url: '/about' },
-  { name: 'Login', url: '/login' },
-  { name: 'Contact', url: '/contact' }
+  { name: 'HOME', url: '/' },
+  { name: 'ABOUT', url: '/about' },
+  { name: 'MENU', url: '/menu' },
+  { name: 'RESERVATIONS', url: '/reservations' },
+  { name: 'ORDER ONLINE', url: '/order' },
+  { name: 'LOGIN', url: '/login' },
 ];
 
 const Nav = () => {
   return (
     <nav>
+      <Header />
       <ul>
         {navLinks.map((link, index) => (
           <li key={index}>
