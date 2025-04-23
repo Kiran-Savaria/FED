@@ -4,10 +4,13 @@ body, html {
   font-family: 'Arial', sans-serif;
 }
 
+.root {
+  height: 1vh;
+}
+
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,8 +45,6 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1rem;
 }
 
 nav {
@@ -131,7 +132,6 @@ footer p {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fff;
   color: #333;
-  height: 82vh;
 }
 
 .error {
@@ -152,14 +152,15 @@ footer p {
   padding: 1.5rem 1rem;
   margin: 0;
   border-radius: 5px;
+  margin-bottom: 2vh;
 }
 
 .booking-benefits {
   display: flex;
-  background-color: #f9f9f9;
   padding: 2rem;
   border-radius: 10px;
   color: #333;
+  text-align: left;
 }
 
 .booking-benefits h2 {
@@ -181,7 +182,6 @@ footer p {
 .flexdiv {
   padding: 3rem 10%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 2rem;

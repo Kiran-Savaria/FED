@@ -9,6 +9,9 @@ function App() {
     <Router>
       <>
         <Nav />
+        <div className='root'>
+          
+        </div>
         <Footer />
       </>
     </Router>
