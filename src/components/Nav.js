@@ -1,5 +1,14 @@
 import React from 'react';
 import Header from './Header';
+import { Routes, Route, Link } from 'react-router-dom';
+import Main from './Main';
+import BookingPage from './BookingPage';
+// import Homepage from './Homepage';
+// import About from './About';
+// import Menu from './Menu';
+// import Reservations from './Reservations';
+// import Order from './Order';
+// import Login from './Login';
 
 const navLinks = [
   { name: 'HOME', url: '/' },
@@ -12,16 +21,27 @@ const navLinks = [
 
 const Nav = () => {
   return (
-    <nav>
-      <Header />
-      <ul>
-        {navLinks.map((link, index) => (
-          <li key={index}>
-            <a href={link.url}>{link.name}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <nav>
+        <Header />
+        <ul>
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <Link to={link.url}>{link.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Main />} />
+        {/* <Route path="/about" element={<About />} /> */}
+        {/* <Route path="/menu" element={<Menu />} /> */}
+        <Route path="/reservations" element={<BookingPage />} />
+        {/* <Route path="/order" element={<Order />} /> */}
+        {/* <Route path="/login" element={<Login />} /> */}
+      </Routes>
+    </>
   );
 };
 
