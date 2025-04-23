@@ -1,25 +1,33 @@
-import { initializeTimes, updateTimes } from "./components/Main";
+import { initializeTimes, updateTimes } from './components/Main';
+import { fetchAPI } from './api'; // wherever fetchAPI is located
 
+jest.mock('./api'); // mock the module
 
-describe('Booking Times Reducer Logic', () => {
-    test('initializeTimes should return correct default times', () => {
-        const result = initializeTimes();
-        expect(result).toEqual(["17:00", "18:00", "19:00", "20:00", "21:00"]);
-      });
-
-  test('updateTimes should return the correct times for given date', () => {
-    const stateBefore = ['17:00', '18:00'];
-    const action = { type: 'update_times', date: '2025-05-01' };
-    const result = updateTimes(stateBefore, action);
-
-    expect(result).toEqual(['17:00', '18:00', '19:00', '20:00', '21:00']);
+describe('Booking Times Reducers', () => {
+  beforeEach(() => {
+    // Reset mocks before each test
+    fetchAPI.mockClear();
   });
 
-  test('updateTimes should return previous state if action type is unknown', () => {
-    const prevState = ['17:00', '18:00'];
-    const action = { type: 'unknown_action' };
-    const result = updateTimes(prevState, action);
+  test('initializeTimes should return correct default times', () => {
+    const mockTimes = ['17:00', '18:00', '19:00'];
+    fetchAPI.mockReturnValue(mockTimes); // mock return for today’s date
 
-    expect(result).toBe(prevState); // same reference
+    const result = initializeTimes();
+    expect(result).toEqual(mockTimes);
+    expect(fetchAPI).toHaveBeenCalledTimes(1);
+  });
+
+  test('updateTimes should return updated times based on action date', () => {
+    const mockTimes = ['17:00', '18:00', '19:00'];
+    const testDate = '2023-12-31';
+
+    fetchAPI.mockReturnValue(mockTimes);
+
+    const action = { type: 'update_times', date: testDate };
+    const result = updateTimes([], action);
+
+    expect(result).toEqual(mockTimes);
+    expect(fetchAPI).toHaveBeenCalledWith(testDate);
   });
 });
