@@ -3,6 +3,7 @@ import Header from './Header';
 import { Routes, Route, Link } from 'react-router-dom';
 import Main from './Main';
 import BookingPage from './BookingPage';
+import ConfirmedBooking from './ConfirmedBooking';
 // import Homepage from './Homepage';
 // import About from './About';
 // import Menu from './Menu';
@@ -37,7 +38,8 @@ const Nav = () => {
         <Route path="/" element={<Main />} />
         {/* <Route path="/about" element={<About />} /> */}
         {/* <Route path="/menu" element={<Menu />} /> */}
-        <Route path="/reservations" element={<BookingPage />} />
+        {/* <Route path="/reservations" element={<BookingPage />} /> */}
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
         {/* <Route path="/order" element={<Order />} /> */}
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>

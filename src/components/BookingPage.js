@@ -1,7 +1,7 @@
 import React from "react";
 import BookingForm from "./BookingForm";
 
-const BookingPage = ({ availableTimes, dispatch }) => {
+const BookingPage = ({ availableTimes, dispatch, submitForm }) => {
   return (
     <section className="booking-section">
       <h1 className="booking-heading">Reserve Your Table</h1>
@@ -22,7 +22,7 @@ const BookingPage = ({ availableTimes, dispatch }) => {
             </div>
           </div>
         </div>
-        <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+        <BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm} />
       </div>
     </section>
   );

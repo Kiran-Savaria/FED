@@ -1,41 +1,36 @@
 import React, { useState } from "react";
 
-const BookingForm = () => {
+const BookingForm = ({ availableTimes, dispatch, submitForm }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
-  const [availableTimes, setAvailableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-  ]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({
+    const formData = {
       date,
       time,
       guests,
       occasion,
-    });
-    // You can handle API submission here in the future
-  };
+    };
+    console.log(formData);
+    submitForm(formData);
+  }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-    >
+    <form onSubmit={handleSubmit}>
       <label htmlFor="res-date">Choose date</label>
       <input
         type="date"
         id="res-date"
         value={date}
-        onChange={(e) => setDate(e.target.value)}
+        onChange={(e) => {
+          const selectedDate = e.target.value;
+          setDate(selectedDate);
+          dispatch({ type: "update_times", date: selectedDate });
+        }}
+        required
       />
 
       <label htmlFor="res-time">Choose time</label>
@@ -43,7 +38,9 @@ const BookingForm = () => {
         id="res-time"
         value={time}
         onChange={(e) => setTime(e.target.value)}
+        required
       >
+        <option value="">-- Select a time --</option>
         {availableTimes.map((t) => (
           <option key={t} value={t}>
             {t}
@@ -59,7 +56,8 @@ const BookingForm = () => {
         min="1"
         max="10"
         value={guests}
-        onChange={(e) => setGuests(e.target.value)}
+        onChange={(e) => setGuests(Number(e.target.value))}
+        required
       />
 
       <label htmlFor="occasion">Occasion</label>
@@ -67,6 +65,7 @@ const BookingForm = () => {
         id="occasion"
         value={occasion}
         onChange={(e) => setOccasion(e.target.value)}
+        required
       >
         <option>Birthday</option>
         <option>Anniversary</option>
