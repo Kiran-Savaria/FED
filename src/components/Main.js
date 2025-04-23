@@ -2,12 +2,12 @@ import React, { useReducer } from "react";
 import BookingPage from "./BookingPage";
 
 // Simulated API call — same times for any date
-const fetchAvailableTimes = (date) => {
+export const fetchAvailableTimes = (date) => {
   return ["17:00", "18:00", "19:00", "20:00", "21:00"];
 };
 
 // Reducer function
-const updateTimes = (state, action) => {
+export const updateTimes = (state, action) => {
   if (action.type === "update_times") {
     return fetchAvailableTimes(action.date);
   }
@@ -15,7 +15,7 @@ const updateTimes = (state, action) => {
 };
 
 // Initial state initializer
-const initializeTimes = () => {
+export const initializeTimes = () => {
   const today = new Date().toISOString().split("T")[0];
   return fetchAvailableTimes(today);
 };
